@@ -1,0 +1,156 @@
+ <nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><span id="editbrand">EB</span>ook</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" id="registerlogo" aria-current="page" routerLink="/addregisterDetails"> Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  id="getregisterlogo"  routerLink="/registerdetails">getRegister Details</a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Update Registration</div>
+    <div class="content">
+      <form  (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm"  >
+        <div class="user-details">
+            <!-- ngNativeValidate -->
+            <!--  Registration input Box -->
+          <div class="input-box">
+            <span class="details">Registration Number</span>
+            <input type="text"  required placeholder="registrationNumber"
+            [(ngModel)]="addRegisterDetails.registrationNumber" name="registrationnumber" >  
+        </div>
+      
+        <!--  Email input Box -->
+
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" required
+            [(ngModel)]="addRegisterDetails.email" name="email"
+            #emailid="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && emailid.invalid }"
+            [ngModelOptions]="{standalone: true}"[pattern]="emailPattern"
+    
+            >
+            <div *ngIf="(emailid.touched||f.submitted )&& emailid.errors?.['required']"
+            class="invalid-feedback">Email is Mandatory</div>
+            <div *ngIf="(emailid.touched||f.submitted )&& emailid.errors?.['pattern']" class="invalid-feedback">
+              Email is invalid please provide a valid username
+            </div>
+            
+            
+          </div>
+          <!-- invalid username try again.." -->
+					<!-- + "Rules first letter must be an alphabet and minmum 3 characters"); -->
+
+           <!--  Password input Box -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your Password" required
+            [(ngModel)]="addRegisterDetails.password" name="password"
+            #passwordid="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && passwordid.invalid }"
+            [ngModelOptions]="{standalone: true}"[pattern]="passwordPtn"
+      minlength="8"
+            >
+       <div *ngIf="(passwordid.touched||f.submitted )&& passwordid.errors?.['required']"
+     class="invalid-feedback">Password is Mandatory</div>
+     <div *ngIf="(passwordid.touched||f.submitted )&& passwordid.errors?.['pattern']" class="invalid-feedback">
+       Password should be at least one letter, one number and one special character.
+     </div>
+     <div *ngIf="(passwordid.touched||f.submitted )&& passwordid.errors?.['minlength']" class="invalid-feedback">
+     Password should  be atleast 8
+    </div>
+
+          </div>
+
+        <!--        UserName      -->
+
+        <div class="input-box">
+          <span class="details" name="Username">UserName</span>
+          <input type="text" placeholder="Enter your UserName" required
+          [(ngModel)]="addRegisterDetails.userName" name="Username"
+          #userNameid="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && userNameid.invalid }"
+          [ngModelOptions]="{standalone: true}"[pattern]="usernamePattern"
+     >
+
+     <div *ngIf="(userNameid.touched||f.submitted )&& userNameid.errors?.['required']"
+     class="invalid-feedback">User name is Mandatory</div>
+     <div *ngIf="(userNameid.touched||f.submitted )&& userNameid.errors?.['pattern']"
+
+     class="invalid-feedback"> Enter a Valid Email</div>
+      </div>
+
+        
+        <!--  Mobile Number input Box -->
+
+          <div class="input-box">
+            <span class="details">Mobile Number</span>
+            <!-- <input type="text" placeholder="Enter your password" required> -->
+            <input type="text"  id="mobileNumber" required placeholder="Mobile Number"
+            #mobileNumberid="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && mobileNumberid.invalid }"
+            [ngModelOptions]="{standalone: true}"
+       
+           [(ngModel)]="addRegisterDetails.mobileNumber"  name="mobilenumber" minlength="10" maxlength="10">
+           <div *ngIf="(mobileNumberid.touched||f.submitted )&& mobileNumberid.errors?.['required']"
+           class="invalid-feedback">Mobile Number is Mandatory</div>
+           <div *ngIf="(mobileNumberid.touched||f.submitted )&& mobileNumberid.errors?.['minlength']"
+           class="invalid-feedback">length should not be less than 10</div>
+        </div>
+      </div> 
+    
+        <!-- confirm password -->
+          <!-- <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" placeholder="Confirm your password" required>
+          </div> -->
+           <!-- <div class="gender-details">
+          <input type="radio" name="User" id="dot-1">
+          <input type="radio" name="Author" id="dot-2">
+                    <span class="gender-title">USER TYPE</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">USER</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">AUTHOR</span>
+          </label>
+        
+          
+          </div>
+        </div> -->
+        <div class="form-group">
+          <label for="usertype" id="labelUserType">UserType</label>
+          <select class="form-select" class="form-control"   aria-label="Default select example" id="usertype" [(ngModel)]="addRegisterDetails.usertype"  name="usertype"  >
+              <option value="USER">USER</option>
+              <option value="AUTHOR">AUTHOR</option>
+            </select>
+      </div> 
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!--  -->
+ <!-- <label for="authorname">Authorname  :</label>  -->
+<!-- <input type="text" placeholder="enter author name" required 
+[(ngModel)]="autname" name="authorname">   -->
+<div class="container">
+<div *ngIf="currentFile" class="progress">
+    <div
+      class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progress }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progress + '%' }"
+    >
+      {{ progress }}%
+    </div> 
+  </div>
+  <div style="text-align: center">
+   <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" />
+  </label>
+  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+    Upload
+  </button>
+</div>
+</div>
+  
+
+   <!--> <div class="alert alert-light" role="alert">{{ message }}</div>
+  <div class="card">
+    <div class="card-header">List of Files</div>
+    <ul
+      class="list-group list-group-flush"
+      *ngFor="let file of fileInfos | async">
+      <li class="list-group-item">
+
+        <button>  <a href="{{ file.url }} ">Download</a></button>
+        <a href="">{{ file.name }}</a>
+      
+      </li>
+    </ul>
+  </div>   -->
+
+  <!-- <div class="panel-body table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">AuthorName</th>
+              <th scope="col">BookName</th>
+              <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of fileInfos | async">
+              <td>{{file.autorName}}</td>
+              <td>  <a >{{ file.name }}</a></td>
+              <td>
+                <button style="margin: 10px;" class="btn btn-info"><a href="{{ file.url }}">Download</a></button>
+            </td>  
+            </tr>
+            <tr>
+        </tbody>
+    </table>
+  </div> -->

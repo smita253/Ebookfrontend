@@ -1,0 +1,14 @@
+ .main{
+    border: 2px solid black;
+    height: 200px;
+    margin-top: 10%;
+       
+} 
+.progress{
+    margin-top: 100px;
+    width: 500px;
+    margin-left: 300px;
+}
+.btn{
+    text-align: center;
+}

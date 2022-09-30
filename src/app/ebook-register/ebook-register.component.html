@@ -1,0 +1,137 @@
+<!-- <app-navbar></app-navbar> -->
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form  (ngSubmit) = "f.form.valid && onSubmit()" #f="ngForm"  >
+        <div class="user-details">
+            <!-- ngNativeValidate -->
+            <!--  Registration input Box -->          
+      
+        <!--  Email input Box -->
+
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" autocomplete="off" placeholder="Enter your email" required
+            [(ngModel)]="addRegisterDetails.email" name="email"
+            #emailid="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && emailid.invalid }"
+            [ngModelOptions]="{standalone: true}"[pattern]="emailPattern"
+    
+            >
+            <div *ngIf="(emailid.touched||f.submitted )&& emailid.errors?.['required']"
+            class="invalid-feedback" style="color: red">Email is Mandatory</div>
+            <div *ngIf="(emailid.touched||f.submitted )&& emailid.errors?.['pattern']" class="invalid-feedback">
+              Email is invalid please provide a valid username
+            </div>
+            
+            
+          </div>
+          <!-- invalid username try again.." -->
+					<!-- + "Rules first letter must be an alphabet and minmum 3 characters"); -->
+
+           <!--  Password input Box -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your Password" required
+            [(ngModel)]="addRegisterDetails.password" name="password"
+            #passwordid="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && passwordid.invalid }"
+            [ngModelOptions]="{standalone: true}"[pattern]="passwordPtn"
+      minlength="8"
+            >
+       <div *ngIf="(passwordid.touched||f.submitted )&& passwordid.errors?.['required']"
+     class="invalid-feedback" style="color: red">Password is Mandatory</div>
+     <div *ngIf="(passwordid.touched||f.submitted )&& passwordid.errors?.['pattern']" class="invalid-feedback" style="color: red">
+       Password should be at least one uppercase letter, one number and one special character.
+     </div>
+     <div *ngIf="(passwordid.touched||f.submitted )&& passwordid.errors?.['minlength']" class="invalid-feedback" style="color: red">
+     Password should  be atleast 8
+    </div>
+
+          </div>
+
+        <!--        UserName      -->
+
+        <div class="input-box">
+          <span class="details" name="Username">UserName</span>
+          <input type="text" autocomplete="off" placeholder="Enter your UserName" required
+          [(ngModel)]="addRegisterDetails.userName" name="Username"
+          #userNameid="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && userNameid.invalid }"
+          [ngModelOptions]="{standalone: true}"[pattern]="usernamePattern"
+     >
+
+     <div *ngIf="(userNameid.touched||f.submitted )&& userNameid.errors?.['required']"
+     class="invalid-feedback" style="color: red">User name is Mandatory</div>
+     <div *ngIf="(userNameid.touched||f.submitted )&& userNameid.errors?.['pattern']"
+
+     class="invalid-feedback" style="color: red"> username of first letter should be capital</div>
+      </div>
+
+        
+        <!--  Mobile Number input Box -->
+
+          <div class="input-box">
+            <span class="details">Mobile Number</span>
+            <!-- <input type="text" placeholder="Enter your password" required> -->
+            <input type="text" autocomplete="off"  id="mobileNumber" required placeholder="Mobile Number"
+            #mobileNumberid="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && mobileNumberid.invalid }"
+            [ngModelOptions]="{standalone: true}"
+       
+           [(ngModel)]="addRegisterDetails.mobileNumber"  name="mobilenumber" minlength="10" maxlength="10">
+           <div *ngIf="(mobileNumberid.touched||f.submitted )&& mobileNumberid.errors?.['required']"
+           class="invalid-feedback" style="color: red">Mobile Number is Mandatory</div>
+           <div *ngIf="(mobileNumberid.touched||f.submitted )&& mobileNumberid.errors?.['minlength']"
+           class="invalid-feedback" style="color: red">length should not be less than 10</div>
+        </div>
+
+        <!-- confirm password -->
+          <!-- <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" placeholder="Confirm your password" required>
+          </div> -->
+        </div> 
+        <!-- <div class="gender-details">
+          <input type="radio" name="User" id="dot-1">
+          <input type="radio" name="Author" id="dot-2">
+                    <span class="gender-title">USER TYPE</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">USER</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">AUTHOR</span>
+          </label>
+        
+          
+          </div>
+        </div> -->
+                         
+                         
+                         
+                         
+
+       
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+        <div class="text">
+          <h5>Already have an account?     <a href="#" routerLink="/user">Login</a></h5>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="createBooks"   routerLink="/createbook" class="nav-link">Create Book Name</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="booksList" routerLink="/booklist" class="nav-link">All Book</a>
+    </li>
+  </ul>
+</nav> -->
+
+<!-- <app-navbar></app-navbar> -->
+
+<div class="cardbook">
+<div class="col-md-6 offset-md-3">
+  <h3>Create Book</h3>
+  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+    <div class="form-floating mb-3">
+      <label for="bookName">Book Name</label>
+
+      <input type="text" class="form-control" id="bookNameid" [(ngModel)]="createBook1.bookName" name="bookName"
+        required maxlength="21" #bookid="ngModel" [ngClass]="{ 'is-invalid': f.submitted && bookid.invalid }"
+        [ngModelOptions]="{standalone: true}" placeholder="Enter Book Name">
+      <div *ngIf="(bookid.touched||f.submitted )&& bookid.errors?.['required']" class="invalid-feedback">
+
+        Book Name is required.
+
+      </div>
+
+    </div>
+
+
+    <div class="form-floating mb-3">
+      <label for="floatingInput">Author Name</label>
+
+      <input type="text" class="form-control" id="authorNameid" [(ngModel)]="createBook1.authorName" name="authorName"
+        required maxlength="21" #authorid="ngModel" [ngClass]="{ 'is-invalid': f.submitted && authorid.invalid }"
+        [ngModelOptions]="{standalone: true}" placeholder="Enter Author Name">
+      <div *ngIf="(authorid.touched||f.submitted )&& authorid.errors?.['required']" class="invalid-feedback">
+ 
+        Author Name is required.
+
+      </div>
+    </div>
+
+
+    <div class="form-floating mb-3">
+      <label for="floatingInput">Pages in Book</label>
+
+      <input type="number" class="form-control" id="bookPages" [(ngModel)]="createBook1.bookPages" name="bookPages"
+        required #pageid="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pageid.invalid }"
+        [ngModelOptions]="{standalone: true}" placeholder="Enter No of Pages" min="50">
+      <div *ngIf="(pageid.touched||f.submitted )&& pageid.errors?.['required']" class="invalid-feedback">
+
+        Pages is required.
+
+      </div>
+      <div *ngIf="(pageid.touched||f.submitted )&& pageid.errors?.['min']" class="invalid-feedback">
+
+        Pages count must greater than 50
+
+      </div>
+    </div>
+    <!-- [disabled]="f.form.valid" -->
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>
+</div>

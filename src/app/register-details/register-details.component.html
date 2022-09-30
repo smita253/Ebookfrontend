@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><span id="editbrand">EB</span>ook</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" id="registerlogo" aria-current="page" routerLink="/addregisterDetails"> Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  id="getregisterlogo"  routerLink="/registerdetails">getRegister Details</a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+              <div class="panel-body table-responsive">
+                  <table class="table">
+                      <thead>
+                        
+                          <tr>
+                            <th scope="col">RegistrationNumber</th>
+                           
+                            <th scope="col">UserName</th>
+                            <th scope="col">email</th>
+                            <!-- <th scope="col">password</th> -->
+                            <th scope="col">usertype</th>
+                            <th>Actions</th>
+                            
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let au of authors">
+                            
+                            <td>{{au.registrationNumber}}</td>
+                            <td>{{au.userName}}</td>
+                            <td>{{au.email}}</td>
+                            <!-- <td>{{au.password}}</td> -->
+                            <td>{{au.usertype}}</td>     
+                            
+                            
+                            <td>
+                              <button style="margin: 10px;" (click)="updateLogincd(au.registrationNumber)" class="btn btn-info">UpdateLoginCredintials</button>
+                              <button style="margin: 5px;" (click)="deleteLogincd(au.registrationNumber)"  class="btn btn-danger" > DeleteLoginCd</button>
+                              
+                              </td>  
+
+                          </tr>
+                          <tr>
+                      </tbody>
+                  </table>
+              </div>
+            </div>

@@ -1,0 +1,22 @@
+<!-- <app-navbar></app-navbar> -->
+  <div class="panel-body table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">AuthorName</th>
+              <th scope="col">BookName</th>
+              <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of fileInfos | async">
+              <td>{{file.autorName}}</td>
+              <td>  <a >{{ file.name }}</a></td>
+              <td>
+                <button style="margin: 10px;" class="btn btn-info"  class="btndown" ><a href="{{ file.url }}">Download</a></button>
+            </td>  
+            </tr>
+            <tr>
+        </tbody>
+    </table>
+  </div>
